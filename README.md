@@ -1,6 +1,6 @@
 # Getting Started with Create React To-Do App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[netlify URL](https://todo-app-react91.netlify.app/).
 
 ## Available Scripts
 
