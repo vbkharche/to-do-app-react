@@ -13,6 +13,7 @@ const ToDo = () => {
     const [todo, setTodo] = useState([]);
     const [showalert, setShowAlert] = useState(false);
     const [showsuccess, setShowSuccess] = useState(false);
+    const [checkedItems, setCheckedItems] = useState({});
     const handleClose = () =>{
         setShowAlert(false);
         setShowSuccess(false);
@@ -28,6 +29,12 @@ const ToDo = () => {
         }
         setItem('');
     }
+    const handleCheck = (index) => {
+        setCheckedItems((prev) => ({
+        ...prev,
+        [index]: !prev[index],
+        }));
+    };
     return(
         <>
             <Container>
@@ -47,8 +54,8 @@ const ToDo = () => {
                             </Button>
                         </InputGroup>
                         <div>
-                            <ListGroup as="ol" numbered>
-                                {todo?.map((item, index)=> <ListGroup.Item as="li">{item}</ListGroup.Item>)}
+                            <ListGroup as="ol">
+                                {todo?.map((item, index)=> <ListGroup.Item as="li" className={`d-flex justify-content-between align-items-start ${checkedItems[index] ? 'text-decoration-line-through' : ''}`}>{item} <Form.Check type="checkbox" checked={checkedItems[index] || false} onChange={() => handleCheck(index)} className="me-2" /></ListGroup.Item>)}
                             </ListGroup>
                         </div>
 
